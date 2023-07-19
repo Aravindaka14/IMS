@@ -1,0 +1,56 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'transactions.css' %}" />
+    <title>Inventory Management System</title>
+
+</head>
+
+<body id="body">
+    <header>
+        <div id="logo-container">
+            <i id="logo-firstWord">SOPEO</i>
+            <i id="logo-secondWord">NOW</i>
+        </div>
+        <div id="nav-container">
+            <a href="/">Home</a>
+            <a href="/items">Items</a>
+            <a href="/orders">Orders</a>
+            <a href="/transactions">Transactions</a>
+        </div>
+    </header>
+    <main id="inner-body">
+        <div id="content-div">
+            <h2>TRANSACTIONS :</h2>
+            <table id="transactionTable">
+                <thead>
+                    <th class="transactionTh">S.No</th>
+                    <th class="transactionTh">Name</th>
+                    <th class="transactionTh">Item</th>
+                    <th class="transactionTh">Quantity</th>
+                    <th class="transactionTh">Selling price</th>
+                    <th class="transactionTh">Transactiondttm</th>
+                </thead>
+                <tbody>
+                    {% for data in soldData%}
+                    <tr>
+                        <td class="transactionTd">{{forloop.counter}}</td>
+                        <td class="transactionTd">{{data.Name}}</td>
+                        <td class="transactionTd">{{data.Item_id}}</td>
+                        <td class="transactionTd">{{data.Quantity}}</td>
+                        <td class="transactionTd">{{data.Selling_price}}</td>
+                        <td class="transactionTd">{{data.Transactiondttm}}</td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+
+        </div>
+    </main>
+</body>
+
+</html>

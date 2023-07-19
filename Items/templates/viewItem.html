@@ -1,0 +1,90 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'items.css' %}" />
+    <title>View Item Page</title>
+</head>
+
+<body id="body">
+    <header>
+        <div id="logo-container">
+            <i id="logo-firstWord">SOPEO</i>
+            <i id="logo-secondWord">NOW</i>
+        </div>
+        <div id="nav-container">
+            <a href="/">Home</a>
+            <a href="/items">Items</a>
+            <a href="/orders">Orders</a>
+            <a href="/transactions">Transactions</a>
+        </div>
+    </header>
+    <main id="inner-body">
+        <div id="content-div">
+            <div id="content-div-right">
+                <div id="right-1">
+                    <div class="content-div-right-widget">
+                        <h3> Item Name :</h3>
+                        <p>{{itemData.Name}}</p>
+                    </div>
+                    <div class="content-div-right-widget">
+                        <h3> Item Cost :</h3>
+                        <p>Rs.{{itemData.Cost}}</p>
+                    </div>
+                    <div class="content-div-right-widget">
+                        <h3> Selling Price :</h3>
+                        <p>Rs.{{itemData.Selling_price}}</p>
+                    </div>
+                </div>
+                <div id="right-2">
+                    <div class="content-div-right-widget">
+                        <h3>Quantity Available :</h3>
+                        <p>{{itemData.Quantity}} Units</p>
+                    </div>
+                    <div class="content-div-right-widget">
+                        <h3>Quantity Sold :</h3>
+                        <p>{{itemData.Quantity_sold}} Units</p>
+                    </div>
+                    <div class="content-div-right-widget">
+                        <h3> Profit Earned :</h3>
+                        <p>Rs.{{itemData.Profit_earned}}</p>
+                    </div>
+                </div>
+                <div id="right-3">
+                    <div class="content-div-right-widget">
+                        <h3>Order Placed List</h3>
+                        <h2><a href="/orders/{{itemData.Name}}">View</a></h2>
+                    </div>
+                    <div class="content-div-right-widget">
+                        <h3>Order Received List</h3>
+                        <h2><a href="/orders/received/{{itemData.Name}}">View</a></h2>
+                    </div>
+                    <div class="content-div-right-widget">
+                        <h3>Order Cancelled List</h3>
+                        <h2><a href="/orders/cancel/{{itemData.Name}}">View</a></h2>
+                    </div>
+                </div>
+                <div id="right-4">
+                    <div class="content-div-right-widget">
+                        <h3>Total Revenue :</h3>
+                        <p>Rs.{{itemData.Revenue}}</p>
+                    </div>
+                    <div class="content-div-right-widget">
+                        <h3>Order More Quantity</h3>
+                        <h2><a href="/items/add/{{itemData.Name}}">Add</a></h2>
+                    </div>
+                    <div class="content-div-right-widget">
+                        <h3>Transactions List</h3>
+                        <h2><a href="/transactions/{{itemData.Name}}">View</a></h2>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</body>
+
+</html>

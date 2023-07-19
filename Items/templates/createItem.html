@@ -1,0 +1,53 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'items.css' %}" />
+    <title>Add Item Page</title>
+</head>
+
+<body id="body">
+    <header>
+        <div id="logo-container">
+            <i id="logo-firstWord">SOPEO</i>
+            <i id="logo-secondWord">NOW</i>
+        </div>
+        <div id="nav-container">
+            <a href="/">Home</a>
+            <a href="/items">Items</a>
+            <a href="/orders">Orders</a>
+            <a href="/transactions">Transactions</a>
+        </div>
+    </header>
+    <main id="inner-body">
+        <div id="content-div">
+            <h2>Create New Item</h2>
+            <form action="" method="post">
+                {%csrf_token%}
+                <label>Name :</label>
+                <p> {{form.Name}}</p><br>
+
+                <label>Cost :</label>
+                <p> {{form.Cost}}</p><br>
+
+                <label>Selling Price :</label>
+                <p> {{form.Selling_price}}</p><br>
+                <input type="submit" value="Create" />
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %} style="color: red;">{{ message }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </form>
+        </div>
+    </main>
+
+</body>
+
+</html>

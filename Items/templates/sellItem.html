@@ -1,0 +1,66 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'items.css' %}" />
+    <title>Sell Item Page</title>
+</head>
+
+<body id="body">
+    <header>
+        <div id="logo-container">
+            <i id="logo-firstWord">SOPEO</i>
+            <i id="logo-secondWord">NOW</i>
+        </div>
+        <div id="nav-container">
+            <a href="/">Home</a>
+            <a href="/items">Items</a>
+            <a href="/orders">Orders</a>
+            <a href="/transactions">Transactions</a>
+        </div>
+    </header>
+    <main id="inner-body">
+        <div id="content-div">
+            <h2>Sell Item Page</h2>
+            <form name="sellItem" method="post" action="">
+                {%csrf_token%}
+                <div class="itemContainer">
+                    <label>Person Name :</label>
+                    <input type="text" value="" name="person_name" />
+                </div>
+                <br>
+                <div class="itemContainer">
+                    <label>Item :</label>
+                    <input type="text" value="{{itemData.Name}}" disabled />
+                </div>
+                <br>
+                <div class="itemContainer">
+                    <label>Selling Price :</label>
+                    <input type="text" value="{{itemData.Selling_price}}" disabled />
+                </div>
+                <br>
+                <div class="itemContainer">
+                    <label>Quantity :</label>
+                    <input type="number" name="quantity" />
+                </div>
+                <br>
+                <button type="submit">Sell</button>
+                <button type="reset">Cancel</button>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %} style="color: red;">{{ message }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </form>
+
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'orders.css' %}" />
+    <title>Inventory Management System</title>
+
+</head>
+
+<body id="body">
+    <header>
+        <div id="logo-container">
+            <i id="logo-firstWord">SOPEO</i>
+            <i id="logo-secondWord">NOW</i>
+        </div>
+        <div id="nav-container">
+            <a href="/">Home</a>
+            <a href="/items">Items</a>
+            <a href="/orders">Orders</a>
+            <a href="/transactions">Transactions</a>
+        </div>
+    </header>
+    <main id="inner-body">
+        <div id="content-div">
+            <h2>Orders Placed : <a href="received/0">Orders Received</a><a href="cancel/0">Orders Cancelled</a></h2>
+            <table id="orderTable">
+                <thead>
+                    <th class="orderTh">S.No</th>
+                    <th class="orderTh">Name</th>
+                    <th class="orderTh">Item</th>
+                    <th class="orderTh">Quantity</th>
+                    <th class="orderTh">Cost</th>
+                    <th class="orderTh">Orderdttm</th>
+                    <th class="orderTh">Is_received</th>
+                    <th class="orderTh">Is_cancel</th>
+                </thead>
+                <tbody>
+                    {% for data in orderData%}
+                    <tr>
+                        <td class="orderTd">{{forloop.counter}}</td>
+                        <td class="orderTd">{{data.Name}}</td>
+                        <td class="orderTd">{{data.Item_id}}</td>
+                        <td class="orderTd">{{data.Quantity}}</td>
+                        <td class="orderTd">{{data.Cost}}</td>
+                        <td class="orderTd">{{data.Orderdttm}}</td>
+                        <td class="orderTd"><a href="received/{{data.id}}"><button>{{data.Is_received}}</button></a>
+                        </td>
+                        <td class="orderTd"><a href="cancel/{{data.id}}"><button>{{data.Is_cancel}}</button></a></td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>

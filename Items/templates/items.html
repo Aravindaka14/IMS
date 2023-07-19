@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'items.css' %}" />
+    <title>Inventory Management System</title>
+
+</head>
+
+<body id="body">
+    <header>
+        <div id="logo-container">
+            <i id="logo-firstWord">SOPEO</i>
+            <i id="logo-secondWord">NOW</i>
+        </div>
+        <div id="nav-container">
+            <a href="/">Home</a>
+            <a href="/items">Items</a>
+            <a href="/orders">Orders</a>
+            <a href="/transactions">Transactions</a>
+        </div>
+    </header>
+    <main id="inner-body">
+        <div id="content-div">
+            <h2>Create New Item : <a href="/items/create">Create</a></h2>
+            <h2>ITEMS :</h2>
+            <table id="itemTable">
+                <thead>
+                    <th class="itemTh">S.No</th>
+                    <th class="itemTh">Name</th>
+                    <th class="itemTh">Cost</th>
+                    <th class="itemTh">Quantity</th>
+                    <th class="itemTh">Quantity sold</th>
+                    <th class="itemActionTh"></th>
+                    <th class="itemActionTh">Actions</th>
+                    <th class="itemActionTh"></th>
+                </thead>
+                <tbody>
+                    {% for data in itemData%}
+                    <tr>
+                        <td class="itemTd">{{forloop.counter}}</td>
+                        <td class="itemTd">{{data.Name}}</td>
+                        <td class="itemTd">{{data.Cost}}</td>
+                        <td class="itemTd">{{data.Quantity}}</td>
+                        <td class="itemTd">{{data.Quantity_sold}}</td>
+                        <td class="itemTd"><a href="view/{{data.Name}}">View </a></td>
+                        <td class="itemTd"><a href="add/{{data.Name}}">Add </a></td>
+                        <td class="itemTd"><a href="sell/{{data.Name}}">Sell </a></td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+<!-- 
+    - add a button in item page for create a new item.
+    - render the list of item in stock with view button, edit button, sell button.
+            - sell item form-page(using sell button),
+            - create new item form-page(using create button),
+            - item details page with edit item button, order more quantity of that item, links for 
+            orders placed , orders received, orders cancelled, link for showing transactions of that item.
+    -transactions page with details of items sold
+
+ -->
+
+</html>

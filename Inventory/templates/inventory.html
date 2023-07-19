@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'inventory.css' %}" />
+    <title>Inventory Management System</title>
+
+</head>
+
+<body id="body">
+    <header>
+        <div id="logo-container">
+            <i id="logo-firstWord">SOPEO</i>
+            <i id="logo-secondWord">NOW</i>
+        </div>
+        <div id="nav-container">
+            <a href="/">Home</a>
+            <a href="/items">Items</a>
+            <a href="/orders">Orders</a>
+            <a href="/transactions">Transactions</a>
+        </div>
+    </header>
+    <main id="inner-body">
+        <div id="content-div">
+            <h2>INVENTORY MANAGEMENT SYSTEM :</h2>
+            <br>
+            <div id="inner-content-div">
+                <div id="content-div-left">
+                    <h3>Total Items in Stock : {{totalStocks}}</h3>
+                    <table id="inventoryTable">
+                        <thead>
+                            <th class="invTh">S.No</th>
+                            <th class="invTh">Name of the Item</th>
+                            <th class="invTh">Available Stock</th>
+                        </thead>
+                        <tbody>
+                            {%for data in inventoryData%}
+                            <tr>
+                                <td class="invTd">{{forloop.counter}}</td>
+                                <td class="invTd">{{data.Name}}</td>
+                                <td class="invTd">{{data.Quantity}}</td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+                <div id="content-div-right">
+                    <div id="right-1">
+                        <div class="content-div-right-widget">
+                            <h3>Total Store Profit</h3>
+                            <p>Amount = {{totalProfit}}</p>
+                        </div>
+                        <div class="content-div-right-widget">
+                            <h3>Item with highest Cost</h3>
+                            <p>{{highestCost.name}} : Rs.{{highestCost.cost}}</p>
+                        </div>
+                    </div>
+                    <div id="right-2">
+                        <div class="content-div-right-widget">
+                            <h3>Item with highest Profits</h3>
+                            <p>{{highestProfits.name}} : Rs.{{highestProfits.profits}}</p>
+                        </div>
+                        <div class="content-div-right-widget">
+                            <h3>Item most Sold</h3>
+                            <p>{{mostSoldItem.name}} : {{mostSoldItem.quantitySold}} Units</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
